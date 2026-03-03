@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vc-black: #0A0A08;
+  --vc-white: #F7F4EE;
+  --vc-bg: #F7F4EE;
+  --vc-surface: #F0EDE8;
+  --vc-border: #E8E4DC;
+  --vc-border-hover: #D4CFC7;
+  --vc-orange: #E8511A;
+  --vc-amber: #F5A623;
+  --vc-forest: #1B4332;
+  --vc-sand: #C8B89A;
+  --vc-smoke: #E8E4DC;
+  --vc-ink: #1C1C1A;
+  --vc-muted: #7A7570;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--vc-white);
+  color: var(--vc-ink);
+  font-family: 'Instrument Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--vc-smoke); }
+::-webkit-scrollbar-thumb { background: var(--vc-sand); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--vc-orange); }
+
+/* Accordion animation */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-content.open {
+  grid-template-rows: 1fr;
+}
+.accordion-inner {
+  overflow: hidden;
+}
+
+/* Search highlight */
+mark {
+  background: rgba(232, 81, 26, 0.2);
+  color: var(--vc-orange);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Skip link - visible on focus */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 101;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  background: var(--vc-orange);
+  color: white;
+  border-radius: 0.5rem;
+  outline: none;
+  box-shadow: 0 0 0 2px white;
+}
