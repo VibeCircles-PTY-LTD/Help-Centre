@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Search, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { helpSections } from "@/data/helpContent";
+import { navSections } from "@/data/helpContent";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -107,7 +107,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
-            {helpSections.map((s) => (
+            {navSections.map((s) => (
               <Link
                 key={s.id}
                 href={`/${s.slug}`}
@@ -145,7 +145,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden bg-[#F0EDE8] border-t border-[#E8E4DC] px-6 py-4">
-            {helpSections.map((s) => (
+            {navSections.map((s) => (
               <Link
                 key={s.id}
                 href={`/${s.slug}`}
@@ -198,7 +198,7 @@ export default function Navbar() {
             </form>
             <div className="p-4">
               <p className="text-sm text-[#7A7570] px-2" style={{ fontFamily: "'Instrument Sans', sans-serif" }}>
-                Try searching for "invoice", "campaign", "creators", or "Africa"
+                Try searching for &quot;invoice&quot;, &quot;campaign&quot;, &quot;creators&quot;, or &quot;Africa&quot;
               </p>
             </div>
           </div>

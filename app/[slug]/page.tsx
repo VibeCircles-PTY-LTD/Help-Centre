@@ -7,8 +7,35 @@ import { helpSections } from "@/data/helpContent";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
+/** Only slugs from the content bundle exist at runtime (no on-demand [slug] that can mis-resolve). */
+export const dynamicParams = false;
+
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
+}
+
+function normalizeSlugParam(raw: string): string {
+  let s = raw.trim();
+  try {
+    s = decodeURIComponent(s);
+  } catch {
+    /* invalid encoding — use raw */
+  }
+  return s.replace(/\/+$/, "").trim().toLowerCase();
+}
+
+async function resolveNormalizedSlug(
+  params: Promise<{ slug: string }> | { slug: string }
+): Promise<string> {
+  const p = params instanceof Promise ? await params : params;
+  return normalizeSlugParam(typeof p.slug === "string" ? p.slug : "");
+}
+
+function findSectionBySlug(normalized: string) {
+  return (
+    helpSections.find((s) => s.slug === normalized) ??
+    helpSections.find((s) => s.slug.toLowerCase() === normalized)
+  );
 }
 
 export async function generateStaticParams() {
@@ -16,7 +43,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const section = helpSections.find((s) => s.slug === params.slug);
+  const normalized = await resolveNormalizedSlug(params);
+  const section = findSectionBySlug(normalized);
   if (!section) return { title: "Not Found" };
   return {
     title: `${section.title} — VibeCircles Help Center`,
@@ -24,11 +52,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SectionPage({ params }: Props) {
-  const section = helpSections.find((s) => s.slug === params.slug);
+export default async function SectionPage({ params }: Props) {
+  const normalized = await resolveNormalizedSlug(params);
+  const section = findSectionBySlug(normalized);
   if (!section) notFound();
 
-  const currentIndex = helpSections.findIndex((s) => s.slug === params.slug);
+  const slug = section.slug;
+  const currentIndex = helpSections.findIndex((s) => s.slug === slug);
   const prevSection = currentIndex > 0 ? helpSections[currentIndex - 1] : null;
   const nextSection =
     currentIndex < helpSections.length - 1
@@ -80,7 +110,7 @@ export default function SectionPage({ params }: Props) {
                 className="text-white/60 text-xs uppercase tracking-widest mb-1"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                {`${String(helpSections.findIndex((s) => s.slug === params.slug) + 1).padStart(2, "0")} / ${String(helpSections.length).padStart(2, "0")}`}
+                {`${String(helpSections.findIndex((s) => s.slug === slug) + 1).padStart(2, "0")} / ${String(helpSections.length).padStart(2, "0")}`}
               </p>
               <h1
                 className="text-4xl md:text-5xl font-bold text-white leading-tight"
@@ -150,7 +180,7 @@ export default function SectionPage({ params }: Props) {
                 </p>
                 <nav className="space-y-1">
                   {helpSections
-                    .filter((s) => s.slug !== params.slug)
+                    .filter((s) => s.slug !== slug)
                     .map((s) => (
                       <Link
                         key={s.id}

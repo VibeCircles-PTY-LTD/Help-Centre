@@ -136,20 +136,22 @@ export default function ArticleList({ section }: { section: Section }) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set([firstId]));
   const hasScrolledToHash = useRef(false);
 
-  // Deep link: open accordion and scroll to #article-id
+  // Deep link: open accordion and scroll to #article-id (defer setState to avoid cascading renders)
   useEffect(() => {
     if (typeof window === "undefined" || hasScrolledToHash.current) return;
     const hash = window.location.hash.slice(1);
     if (!hash || !section.articles.some((a) => a.id === hash)) return;
-    setExpandedIds((prev) => new Set(prev).add(hash));
     hasScrolledToHash.current = true;
-    const el = document.getElementById(hash);
-    if (el) {
-      const timeout = setTimeout(() => {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 450);
-      return () => clearTimeout(timeout);
-    }
+    const raf = requestAnimationFrame(() => {
+      setExpandedIds((prev) => new Set(prev).add(hash));
+      const el = document.getElementById(hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 450);
+      }
+    });
+    return () => cancelAnimationFrame(raf);
   }, [section.articles]);
 
   const toggle = (id: string) => {

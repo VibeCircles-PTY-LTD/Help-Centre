@@ -2,7 +2,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { helpSections } from "@/data/helpContent";
-import { ArrowRight, MessageCircle, Mail, Clock } from "lucide-react";
+import { ArrowRight, Mail, Clock } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -50,7 +50,7 @@ export default function HomePage() {
             className="text-[#F7F4EE]/50 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
             style={{ fontFamily: "'Instrument Sans', sans-serif" }}
           >
-            Find answers about partnerships, services, billing, and more. Everything VibeCircles — explained in plain language.
+            Find answers about VibeCircle, the marketplace, business services, and more. Everything VibeCircles — explained in plain language.
           </p>
 
           {/* Search CTA */}
@@ -192,12 +192,12 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { section: "getting-started", article: "what-is-vibecircles", label: "What is VibeCircles?" },
-              { section: "partnerships", article: "how-to-pitch", label: "How to Pitch to VibeCircles" },
-              { section: "billing", article: "payment-methods", label: "Payment Methods Accepted" },
-              { section: "services", article: "local-market-engagement", label: "Local Market Engagement" },
-              { section: "trust", article: "brand-safety", label: "Brand Safety Standards" },
-              { section: "technical-support", article: "campaign-reporting-access", label: "Campaign Reporting Access" },
+              { section: "about-vibecircles", article: "what-is-vibecircles", label: "What is VibeCircles?" },
+              { section: "vibecircle", article: "what-is-vibecircle", label: "What is VibeCircle?" },
+              { section: "brand-creator-marketplace", article: "what-is-the-vibecircles-marketplace", label: "What is the marketplace?" },
+              { section: "vibecircle", article: "types-of-accounts-on-vibecircle", label: "Account types on VibeCircle" },
+              { section: "business-services", article: "advertising", label: "Advertising" },
+              { section: "faqs", article: "how-do-i-contact-support", label: "Contact support" },
             ].map((item) => {
               const section = helpSections.find((s) => s.slug === item.section)!;
               return (
@@ -241,12 +241,12 @@ export default function HomePage() {
                 className="text-[#F7F4EE]/50 max-w-md"
                 style={{ fontFamily: "'Instrument Sans', sans-serif" }}
               >
-                Our team is made of real people who actually read emails. Reach out and we'll get back to you fast.
+                Our team is made of real people who actually read emails. Reach out and we&apos;ll get back to you fast.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="mailto:hello@vibecircles.com"
+                href="mailto:info@vibecircles.co.za"
                 className="flex items-center gap-2 px-5 py-3 bg-[#E8511A] hover:bg-[#D4461A] text-white rounded-xl font-medium text-sm transition-colors"
                 style={{ fontFamily: "'Instrument Sans', sans-serif" }}
               >

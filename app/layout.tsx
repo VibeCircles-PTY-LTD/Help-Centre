@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const site = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://help-center.vibecircles.co.za").replace(/\/$/, "");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(site),
   title: "VibeCircles Help Center",
   description:
-    "Find answers to everything about VibeCircles — partnerships, services, billing, and more.",
+    "Find answers about VibeCircle, the marketplace, business services, and more.",
   openGraph: {
     title: "VibeCircles Help Center",
     description:
       "Community-powered marketing. Find the answers you need.",
     siteName: "VibeCircles",
+    url: site,
   },
 };
 
@@ -20,12 +24,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body>
         <a
           href="#main-content"

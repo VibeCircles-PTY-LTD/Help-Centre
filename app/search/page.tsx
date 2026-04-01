@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback, Suspense } from "react";
+import { useState, useEffect, useMemo, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -28,18 +28,13 @@ function SearchContent() {
   const router = useRouter();
   const initialQuery = searchParams.get("q") || "";
   const [query, setQuery] = useState(initialQuery);
-  const [results, setResults] = useState(() => searchArticles(initialQuery));
-
-  const doSearch = useCallback((q: string) => {
-    setResults(searchArticles(q));
-    const params = new URLSearchParams();
-    if (q) params.set("q", q);
-    router.replace(`/search${q ? `?q=${encodeURIComponent(q)}` : ""}`, { scroll: false });
-  }, [router]);
+  const results = useMemo(() => searchArticles(query), [query]);
 
   useEffect(() => {
-    doSearch(query);
-  }, [query, doSearch]);
+    const params = new URLSearchParams();
+    if (query) params.set("q", query);
+    router.replace(`/search${query ? `?q=${encodeURIComponent(query)}` : ""}`, { scroll: false });
+  }, [query, router]);
 
   return (
     <div className="min-h-screen bg-[#F7F4EE]">
@@ -101,7 +96,7 @@ function SearchContent() {
                   Try different keywords, or browse all topics below.
                 </p>
                 <a
-                  href="mailto:hello@vibecircles.com"
+                  href="mailto:info@vibecircles.co.za"
                   className="inline-flex items-center gap-2 px-5 py-3 bg-[#E8511A] text-white rounded-xl text-sm font-medium hover:bg-[#D4461A] transition-colors"
                   style={{ fontFamily: "'Instrument Sans', sans-serif" }}
                 >

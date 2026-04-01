@@ -22,7 +22,7 @@ export default function NotFound() {
           className="text-[#7A7570] mb-10"
           style={{ fontFamily: "'Instrument Sans', sans-serif" }}
         >
-          The page you're looking for doesn't exist. Head back to the help center.
+          The page you&apos;re looking for doesn&apos;t exist. Head back to the help center.
         </p>
         <Link
           href="/"

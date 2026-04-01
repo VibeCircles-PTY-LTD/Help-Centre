@@ -1,19 +1,30 @@
 import type { MetadataRoute } from "next";
 import { helpSections } from "@/data/helpContent";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://help.vibecircles.com";
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://help-center.vibecircles.co.za").replace(/\/$/, "");
+const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+const ORIGIN = `${SITE}${BASE_PATH}`;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const sectionUrls = helpSections.map((section) => ({
-    url: `${BASE_URL}/${section.slug}`,
+    url: `${ORIGIN}/${section.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
+  const legalUrls = (["privacy", "terms", "cookies", "popia"] as const).map((path) => ({
+    url: `${ORIGIN}/${path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.35,
+  }));
+
   return [
-    { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE_URL}/search`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.5 },
+    { url: ORIGIN, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+    { url: `${ORIGIN}/search`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.5 },
+    { url: `${ORIGIN}/roadmap`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
+    ...legalUrls,
     ...sectionUrls,
   ];
 }

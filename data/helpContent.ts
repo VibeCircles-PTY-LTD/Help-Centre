@@ -15,7 +15,9 @@ export interface Section {
   articles: Article[];
 }
 
-export const helpSections: Section[] = [
+// The old content bundle is kept to avoid a massive delete diff.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const legacyHelpSections: Section[] = [
   {
     id: "getting-started",
     slug: "getting-started",
@@ -88,7 +90,7 @@ To be the most trusted community-powered growth platform in Africa and the Afric
         content: `We've structured our team so you always reach someone who can actually help:
 
 **General Enquiries**
-Not sure where to start? Email hello@vibecircles.com and our team will route you to the right person within 24 hours.
+Not sure where to start? Email info@vibecircles.co.za and our team will route you to the right person within 24 hours.
 
 **Partnership & Business Development**
 Looking to start a brand partnership, discuss a sponsored campaign, or explore a collaboration?
@@ -948,7 +950,477 @@ Draft API documentation is available to approved beta participants. Public docs 
       },
     ],
   },
+  {
+    id: "advertising",
+    slug: "advertising",
+    title: "Advertising",
+    tagline: "How brand and sponsored placements work across VibeCircles.",
+    icon: "◇",
+    color: "#C45C26",
+    articles: [
+      {
+        id: "advertising-overview",
+        title: "Advertising on VibeCircles",
+        tags: ["ads", "sponsored", "overview"],
+        content: `VibeCircles offers advertising and sponsored placements that sit alongside — not on top of — community content. Our approach keeps creative and cultural context intact while giving brands measurable visibility.
+
+**What counts as advertising**
+Sponsored posts, paid amplification, branded content labels, and partner placements that are clearly disclosed to audiences. We follow platform rules and local advertising standards.
+
+**How it differs from organic community work**
+Organic community campaigns are built with creators and communities over time. Advertising is paid media with defined flight dates, budgets, and delivery guarantees. Both can work together in a single growth plan.
+
+**Getting started**
+For advertising briefs, budgets, and available formats, email partnerships@vibecircles.com with your objectives, target regions, and timeline.`,
+      },
+      {
+        id: "ad-formats-and-placement",
+        title: "Ad Formats & Placement",
+        tags: ["formats", "placement", "inventory"],
+        content: `Available formats depend on the channels in your plan (social, creator content, events, and partner surfaces).
+
+**Common formats**
+- In-feed and story-style placements on supported social platforms
+- Creator-led branded segments within agreed campaign packages
+- Newsletter and partner-site modules (where applicable)
+- Event and activation sponsorships with on-site or digital visibility
+
+**Placement principles**
+We prioritise relevance: your brand appears next to content and communities that fit your brief. We do not force placements that break community trust or platform policies.
+
+**Creative requirements**
+You will need approved assets, clear CTAs, and disclosure copy where required. Our team reviews all creative for compliance before go-live.
+
+Ask partnerships@vibecircles.com for a current rate card and format catalogue.`,
+      },
+      {
+        id: "advertising-brand-safety",
+        title: "Brand Safety & Disclosure",
+        tags: ["brand safety", "disclosure", "compliance"],
+        content: `We take brand safety and honest labelling seriously.
+
+**Disclosure**
+Sponsored and paid content is labelled according to platform rules and applicable law (e.g. clear #ad or platform-native paid-partnership tags where required).
+
+**Exclusions**
+We maintain blocklists for categories and content types that do not align with partner requirements or our values. Share your exclusion list during briefing so we can enforce it in trafficking.
+
+**Reporting**
+Campaign reports show delivery, environments, and key engagement metrics. For sensitive categories, we can provide additional placement reporting on request.
+
+Questions? partnerships@vibecircles.com`,
+      },
+    ],
+  },
+  {
+    id: "marketplace",
+    slug: "marketplace",
+    title: "Marketplace",
+    tagline: "Buying, selling, and partner offers inside the VibeCircles ecosystem.",
+    icon: "◫",
+    color: "#2563EB",
+    articles: [
+      {
+        id: "marketplace-overview",
+        title: "Marketplace Overview",
+        tags: ["marketplace", "overview", "ecosystem"],
+        content: `The VibeCircles marketplace connects brands, creators, and service partners with packaged offers, add-ons, and campaign extras — in one place.
+
+**What you’ll find**
+- Campaign and creator packages with transparent scopes
+- Add-on services (production, research, extended reporting)
+- Partner perks and bundles negotiated for the VibeCircles community
+
+**Who it’s for**
+Brands looking to compare options quickly, and creators or vendors approved to list eligible services.
+
+**How to access**
+Availability varies by region and partnership tier. Log in to the Partner Portal when marketplace features are enabled for your account, or email partnerships@vibecircles.com for access and eligibility.`,
+      },
+      {
+        id: "marketplace-orders-and-billing",
+        title: "Orders & Billing",
+        tags: ["orders", "billing", "invoices"],
+        content: `Marketplace orders are tied to your VibeCircles account and contract.
+
+**Checkout & confirmation**
+When you purchase a marketplace item, you receive an order confirmation and timeline for fulfilment. Larger scopes may require a short scoping call before work begins.
+
+**Invoicing**
+Billing follows your master agreement: some items are invoiced immediately, others are consolidated monthly. Invoices list VAT/tax lines where applicable.
+
+**Changes & cancellations**
+Scope changes before kickoff are handled through your account manager or partnerships@vibecircles.com. Cancellation terms depend on the specific offer — check the listing terms or your order summary.
+
+For invoice questions: finance@vibecircles.com`,
+      },
+      {
+        id: "marketplace-for-creators",
+        title: "For Creators & Sellers",
+        tags: ["creators", "sellers", "listings"],
+        content: `Approved creators and partners may list eligible services when the marketplace is open in their region.
+
+**Applying to list**
+- Complete onboarding and verification steps requested by our team
+- Agree to marketplace terms, pricing rules, and delivery standards
+- Keep your profile and availability up to date
+
+**Quality & compliance**
+Listings must be accurate, fairly priced, and deliverable on the stated timeline. Misleading offers or repeated delivery issues can result in suspension from the marketplace.
+
+**Support**
+creators@vibecircles.com — for creator programmes and listing questions.`,
+      },
+    ],
+  },
+  {
+    id: "vibecircles-social-media",
+    slug: "vibecircles-social-media",
+    title: "VibeCircles Social Media",
+    tagline: "Official channels, community norms, and how we show up online.",
+    icon: "⍟",
+    color: "#7C3AED",
+    articles: [
+      {
+        id: "official-social-accounts",
+        title: "Official Accounts",
+        tags: ["social", "official", "channels"],
+        content: `Stay connected with VibeCircles only through our verified official profiles.
+
+**Where to find us**
+- LinkedIn: linkedin.com/company/vibecircles
+- Instagram: @vibecircles
+- X (Twitter): @vibecircles
+
+**Impersonation**
+We will never ask for passwords, OTPs, or payment details via unsolicited DMs. If an account looks suspicious, report it on the platform and alert us at info@vibecircles.co.za.
+
+**Press & verification**
+Journalists should use press@vibecircles.com. We can confirm official accounts for your stories.`,
+      },
+      {
+        id: "social-community-guidelines",
+        title: "Community Guidelines (Social)",
+        tags: ["community", "guidelines", "moderation"],
+        content: `We want our social spaces to stay respectful, useful, and culturally aware.
+
+**We welcome**
+Constructive questions, partnership enquiries directed to the right inbox, and celebration of community and creator wins.
+
+**We don’t tolerate**
+Harassment, hate speech, spam, scams, or coordinated attacks. We may hide, delete, or report content that violates platform rules or our values.
+
+**Engaging with us**
+Tag us in relevant conversations; we read as much as we can but cannot respond to every mention. For support, email is still the most reliable channel.
+
+**Moderation**
+Moderation decisions are final for our owned channels. Repeated violations may result in blocks or reports to the platform.`,
+      },
+      {
+        id: "social-content-and-campaigns",
+        title: "Campaigns & UGC",
+        tags: ["UGC", "campaigns", "features"],
+        content: `From time to time we spotlight partners, creators, and community stories.
+
+**Features & reposts**
+Being featured is always at our discretion. We credit creators and partners where we share their work, subject to permissions.
+
+**User-generated content (UGC)**
+If we ask to reshare your content, we’ll request permission where required. Don’t send confidential or unreleased brand material without clearance.
+
+**Hashtags & challenges**
+When we run public challenges, participation rules will be posted with each campaign. Follow those rules for eligibility and prize terms (where applicable).`,
+      },
+    ],
+  },
+  {
+    id: "legal",
+    slug: "legal",
+    title: "Legal",
+    tagline: "Terms, privacy, and how we handle personal information (including POPIA).",
+    icon: "⚖",
+    color: "#475569",
+    articles: [
+      {
+        id: "terms-of-service",
+        title: "Terms of Service",
+        tags: ["terms", "legal", "agreement"],
+        content: `These help-centre articles summarise how our services work. Your relationship with VibeCircles is governed by the **Terms of Service** in your contract or sign-up flow, which may include master services agreements, statements of work, and platform terms.
+
+**What the terms cover**
+- Use of VibeCircles services and deliverables
+- Payment, confidentiality, and intellectual property where applicable
+- Limitations of liability and governing law (as stated in your agreement)
+
+**Updates**
+We may update terms for legal or operational reasons. Material changes are communicated according to your agreement (e.g. email or dashboard notice).
+
+**Questions**
+For a copy of your active terms or clarification: info@vibecircles.co.za (we’ll route you to legal ops where needed).`,
+      },
+      {
+        id: "privacy-policy",
+        title: "Privacy Policy",
+        tags: ["privacy", "data", "policy"],
+        content: `VibeCircles processes personal information to deliver campaigns, operate accounts, and improve our services — in line with our **Privacy Policy**.
+
+**What you should read**
+- What data we collect (e.g. contact details, campaign analytics, account activity)
+- How we use and share data (including subprocessors where relevant)
+- Retention, security, and your choices
+
+**Partner & campaign data**
+Campaign reporting may include aggregated or pseudonymised audience metrics. We minimise collection to what is needed for the scope of work and contractual obligations.
+
+**Contact**
+Privacy-specific requests: info@vibecircles.co.za with “Privacy” in the subject line, or use the contact details provided in the full Privacy Policy on our website when published there.`,
+      },
+      {
+        id: "popia-compliance",
+        title: "POPIA & Personal Information",
+        tags: ["POPIA", "South Africa", "compliance"],
+        content: `Where the **Protection of Personal Information Act (POPIA)** applies, VibeCircles acts as responsible party and/or operator as defined in your agreement and the nature of processing.
+
+**Our commitments**
+- Process personal information lawfully and for defined purposes
+- Implement reasonable technical and organisational measures
+- Support data subject requests where we are the correct party to do so (subject to verification and legal limits)
+
+**Campaign context**
+For South African audiences, we work with partners to ensure collection notices, consent where required, and retention align with POPIA and platform rules.
+
+**Data subject requests**
+To exercise rights under POPIA (e.g. access, correction, objection in applicable cases), email info@vibecircles.co.za with “POPIA request” and enough detail to verify your identity.
+
+We may need to coordinate with brand partners when they hold separate data controllership — we’ll explain next steps in those cases.`,
+      },
+    ],
+  },
 ];
+
+export const helpSections: Section[] = [
+  {
+    id: "about-vibecircles",
+    slug: "about-vibecircles",
+    title: "About VibeCircles",
+    tagline:
+      "A digital company that connects people, creators, and businesses through a unified social and marketplace ecosystem.",
+    icon: "🏢",
+    color: "#E8511A",
+    articles: [
+      {
+        id: "what-is-vibecircles",
+        title: "What is VibeCircles?",
+        content: `VibeCircles is a digital company that connects people, creators, and businesses through a unified social and marketplace ecosystem.`,
+      },
+      {
+        id: "why-vibecircles-was-founded",
+        title: "Why VibeCircles was founded",
+        content: `VibeCircles was created to bridge the gap between social media engagement and real-world opportunities by giving creators and businesses tools to collaborate, grow, and monetize.`,
+      },
+      {
+        id: "vibecircles-business-model-explained",
+        title: "The VibeCircles business model explained",
+        content: `The platform combines social networking with a marketplace where brands and creators can collaborate, advertise, and transact.`,
+      },
+      {
+        id: "services-vibecircles-offers",
+        title: "Services VibeCircles offers",
+        content: `- Social media platform (VibeCircle)\n- Brand & creator marketplace\n- Advertising solutions\n- Business tools and analytics\n- Location-based discovery`,
+      },
+      {
+        id: "how-to-get-started-with-vibecircles",
+        title: "How to get started with VibeCircles",
+        content: `1. Create an account on VibeCircle\n2. Choose your account type\n3. Build your profile\n4. Start engaging or listing services`,
+      },
+      {
+        id: "how-vibecircle-and-marketplace-work-together",
+        title: "How VibeCircle and the marketplace work together",
+        content: `The social platform builds your presence, while the marketplace turns that presence into opportunities and revenue.`,
+      },
+    ],
+  },
+  {
+    id: "vibecircle",
+    slug: "vibecircle",
+    title: "VibeCircle",
+    tagline: "A social media platform focused on real connections, content discovery, and creator growth.",
+    icon: "📱",
+    color: "#7C3AED",
+    articles: [
+      {
+        id: "what-is-vibecircle",
+        title: "What is VibeCircle?",
+        content: `VibeCircle is a social media platform focused on real connections, content discovery, and creator growth.`,
+      },
+      {
+        id: "what-kind-of-social-media-platform-is-vibecircle",
+        title: "What kind of social media platform is VibeCircle?",
+        content: `It is a hybrid platform combining content sharing, discovery, and monetization tools.`,
+      },
+      {
+        id: "why-was-vibecircle-created",
+        title: "Why was VibeCircle created?",
+        content: `To give users more control, better opportunities, and meaningful engagement beyond traditional social media.`,
+      },
+      {
+        id: "who-can-use-vibecircle",
+        title: "Who can use VibeCircle?",
+        content: `Anyone — individuals, creators, influencers, and businesses.`,
+      },
+      {
+        id: "vibecircle-mission-and-values",
+        title: "VibeCircle's mission and values",
+        content: `- Authenticity\n- Opportunity\n- Community\n- Growth`,
+      },
+      {
+        id: "types-of-accounts-on-vibecircle",
+        title: "Types of accounts on VibeCircle",
+        content: `**1. Basic Account**\n\nDesigned for everyday users and general community participation.\n\n**Qualification:** Open to all users without restrictions.\n\n**Purpose:** Enables standard platform features such as browsing, posting, and interacting with content.\n\n**2. Influencer Account**\n\nIntended for users with an established audience and strong engagement levels.\n\n**Qualification:** Requires a high follower count and consistent audience interaction.\n\n**Purpose:** Provides enhanced visibility and potential access to promotional or monetization features.\n\n**3. Creator Account**\n\nBuilt for individuals actively producing and sharing original content.\n\n**Qualification:** Requires consistent content creation and platform activity.\n\n**Purpose:** Offers tools and insights to support audience growth and content management.\n\n**4. Orbit Account (Exclusive)**\n\nReserved for a select group of high-value or premium users.\n\n**Qualification:** Invitation-only or based on strict internal criteria.\n\n**Purpose:** Grants access to exclusive features, priority support, and elevated platform status.`,
+      },
+      {
+        id: "how-to-create-your-vibecircle-account",
+        title: "How to create your VibeCircle account",
+        content: `1. Sign up on the platform\n2. Set your profile\n3. Select account type\n4. Start posting and engaging`,
+      },
+      {
+        id: "community-guidelines-on-vibecircle",
+        title: "Community guidelines on VibeCircle",
+        content: `- Respect others\n- No harmful or illegal content\n- Authentic interactions only`,
+      },
+    ],
+  },
+  {
+    id: "brand-creator-marketplace",
+    slug: "brand-creator-marketplace",
+    title: "Brand & Creator Marketplace",
+    tagline: "A platform where brands and creators connect for collaborations and promotions.",
+    icon: "🤝",
+    color: "#F5A623",
+    articles: [
+      {
+        id: "what-is-the-vibecircles-marketplace",
+        title: "What is the VibeCircles marketplace?",
+        content: `A platform where brands and creators connect for collaborations and promotions.`,
+      },
+      {
+        id: "how-brands-and-creators-find-each-other",
+        title: "How brands and creators find each other",
+        content: `Through profiles, search filters, and engagement metrics.`,
+      },
+      {
+        id: "what-is-social-gravity",
+        title: "What is Social Gravity?",
+        content: `A trust metric based on follower count, engagement, and activity.`,
+      },
+      {
+        id: "how-account-type-affects-your-marketplace-profile",
+        title: "How account type affects your marketplace profile",
+        content: `Higher-tier accounts gain more visibility and trust signals.`,
+      },
+      {
+        id: "how-to-set-up-as-a-creator-on-the-marketplace",
+        title: "How to set up as a creator on the marketplace",
+        content: `- Complete profile\n- Link social presence\n- Set services and rates`,
+      },
+      {
+        id: "how-to-list-your-brand-on-the-marketplace",
+        title: "How to list your brand on the marketplace",
+        content: `- Create business account\n- Add brand details\n- Publish campaigns`,
+      },
+      {
+        id: "how-deals-and-collaborations-work",
+        title: "How deals and collaborations work",
+        content: `Brands create offers, creators apply or get invited, and agreements are made.`,
+      },
+      {
+        id: "payments-and-payouts",
+        title: "Payments and payouts",
+        content: `Handled securely through the platform with transparent tracking.`,
+      },
+    ],
+  },
+  {
+    id: "business-services",
+    slug: "business-services",
+    title: "Business Services",
+    tagline: "Advertising, location claims, SME-friendly services, and business accounts.",
+    icon: "💼",
+    color: "#2563EB",
+    articles: [
+      {
+        id: "advertising",
+        title: "Advertising",
+        content: `Businesses can promote content, products, and services to targeted audiences.`,
+      },
+      {
+        id: "location-claims",
+        title: "Location Claims",
+        content: `Businesses can claim their physical or digital presence to improve visibility.`,
+      },
+      {
+        id: "sme-friendly-services",
+        title: "SME-Friendly Services",
+        content: `Affordable tools designed for small and medium businesses.`,
+      },
+      {
+        id: "business-accounts",
+        title: "Business Accounts",
+        content: `Provide analytics, advertising tools, and marketplace access.`,
+      },
+    ],
+  },
+  {
+    id: "faqs",
+    slug: "faqs",
+    title: "FAQs",
+    tagline: "Quick answers about VibeCircles and VibeCircle.",
+    icon: "❓",
+    color: "#475569",
+    articles: [
+      {
+        id: "what-is-the-difference-between-vibecircles-and-vibecircle",
+        title: "What is the difference between VibeCircles and VibeCircle?",
+        content: `VibeCircles is the company; VibeCircle is the platform.`,
+      },
+      {
+        id: "is-vibecircle-free-to-use",
+        title: "Is VibeCircle free to use?",
+        content: `Yes, with optional paid features.`,
+      },
+      {
+        id: "how-is-vibecircle-different",
+        title: "How is VibeCircle different?",
+        content: `It combines social media with a marketplace.`,
+      },
+      {
+        id: "can-i-use-both-a-personal-and-business-account",
+        title: "Can I use both a personal and business account?",
+        content: `Yes.`,
+      },
+      {
+        id: "how-do-i-contact-support",
+        title: "How do I contact support?",
+        content: `Through the official website or in-app support.`,
+      },
+    ],
+  },
+];
+
+/** Section IDs for the header nav only. All sections stay listed on the home page and in search. */
+export const navSectionIds = [
+  "about-vibecircles",
+  "vibecircle",
+  "brand-creator-marketplace",
+  "business-services",
+  "faqs",
+] as const;
+
+export const navSections: Section[] = navSectionIds.map((id) => {
+  const s = helpSections.find((x) => x.id === id);
+  if (!s) throw new Error(`navSectionIds references unknown section: ${id}`);
+  return s;
+});
 
 export function getAllArticles() {
   return helpSections.flatMap((section) =>
